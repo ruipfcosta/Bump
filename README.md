@@ -4,12 +4,12 @@ Bump is a command line utility to bump your app versions acording to the format 
 
 ## How does it work?
 
-That's the easiest part! Simply create a file named `Bumpfile` with the configurations for the version updates of your apps. Then run the `bump` command on the same directory.
+That's the easiest part! Simply create a file named `Bumpfile` with the configurations for the version updates of your apps. Then run `bump` on the same directory.
 
 
 ### Bumpfile
 
-The Bumpfile allows Bump determining what versions need updating and how. The format for entries on the Bumpfile is simple:
+The Bumpfile tells Bump what versions need updating and how they should be updated. The format for entries on the Bumpfile is simple:
 
 ```
 [Type] [Version update format] [Target] [Optional xcodeproj path]
