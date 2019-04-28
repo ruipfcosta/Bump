@@ -1,6 +1,8 @@
 # Bump
 
-Bump is a command line utility to bump your app versions acording to the format you specify.
+Bump is a command line utility to bump your app versions acording to the format you specify. 
+
+**Notice: Bump is still an experimental idea therefore not ready yet for production use.**
 
 ## How does it work?
 
