@@ -6,7 +6,7 @@ protocol BumpProcessor {
 }
 
 enum XcodeError: String, LocalizedError {
-    case missingTargetNameParameter = "Target name not present on parameters"
+    case missingTargetNameParameter = "Missing target name"
     case projectFileNotFound = "xcodeproj file not found"
     case failedToLoadProject = "Failed to load xcodeproj file"
     case targetNotFoundInProject = "Target not present in project"

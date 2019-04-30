@@ -1,10 +1,14 @@
 import Foundation
 
-enum VersionUpdaterError: Error {
-    case unrecognizedWildcardType
-    case mismatchingVersionFormat
-    case mismatchingDataType
-    case invalidDateFormat
+enum VersionUpdaterError: String, LocalizedError {
+    case unrecognizedWildcardType = "Unrecognized wildcard"
+    case mismatchingVersionFormat = "Mismatching version format"
+    case mismatchingDataType = "Mismatching data type"
+    case invalidDateFormat = "Invalid date format"
+    
+    var errorDescription: String? {
+        return rawValue
+    }
 }
 
 class VersionUpdater {
