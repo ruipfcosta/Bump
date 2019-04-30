@@ -4,8 +4,8 @@ do {
     let entries = try BumpfileParser().parse()
 
     // Identify entries types and run using the correct processor
-    entries.forEach {
-        var remainingParts = $0
+    for entry in entries {
+        var remainingParts = entry
         let identifier = remainingParts.removeFirst() // entry type
         let formatString = remainingParts.removeFirst() // version format
 
@@ -19,14 +19,8 @@ do {
             exit(EXIT_FAILURE)
         }
 
-        // Initialize version updater
-        do {
-            let updater = try VersionUpdater(format: formatString)
-            try processor.run(versionUpdater: updater, remainingParts: remainingParts)
-        } catch {
-            print("Error: \(error.localizedDescription)")
-            exit(EXIT_FAILURE)
-        }
+        let updater = try VersionUpdater(format: formatString)
+        try processor.run(versionUpdater: updater, remainingParts: remainingParts)
     }
 
     exit(EXIT_SUCCESS)
