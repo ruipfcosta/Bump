@@ -2,6 +2,7 @@ import Foundation
 
 enum VersionUpdaterError: Error {
     case unrecognizedWildcardType
+    case mismatchingVersionFormat
     case mismatchingDataType
     case invalidDateFormat
 }
@@ -53,7 +54,7 @@ class VersionUpdater {
         self.formatParts = tokens
     }
 
-    func nextVersion(_ currentVersion: String) throws -> String? {
+    func nextVersion(_ currentVersion: String) throws -> String {
         var updatableParts = 0
         
         let pattern = formatParts.reduce("") { acc, part in
@@ -72,7 +73,9 @@ class VersionUpdater {
         let matchingGroups = currentVersion.capturedGroups(withRegex: pattern)
         
         // Make sure the pattern built captures the same number of updatable parts
-        guard updatableParts == matchingGroups.count else { return .none }
+        guard updatableParts == matchingGroups.count else {
+            throw VersionUpdaterError.mismatchingVersionFormat
+        }
         
         // Build new version
         var updateIndex = 0
