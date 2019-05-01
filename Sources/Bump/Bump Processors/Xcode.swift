@@ -57,7 +57,7 @@ class Xcode: BumpProcessor {
         let uniquePlistPaths = Set(plistPaths)
             
         for path in uniquePlistPaths {
-            print("Updating \"\(path)\" for target \"\(target)\"")
+            print("Updating \"\(path)\" for target \"\(target.name)\"")
             
             do {
                 try updateCurrentVersion(infoPlistPath: path, versionUpdater: versionUpdater)
