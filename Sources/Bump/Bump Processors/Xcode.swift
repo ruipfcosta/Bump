@@ -1,5 +1,5 @@
 import Foundation
-import xcodeproj
+import XcodeProj
 
 protocol BumpProcessor {
     func run(versionUpdater: VersionUpdater, remainingParts: [String]) throws
