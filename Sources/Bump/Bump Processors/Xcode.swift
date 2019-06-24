@@ -57,10 +57,14 @@ class Xcode: BumpProcessor {
         let uniquePlistPaths = Set(plistPaths)
             
         for path in uniquePlistPaths {
-            print("Updating \"\(path)\" for target \"\(target.name)\"")
+            // Expand $(SRCROOT) if present
+            let currentPath = FileManager.default.currentDirectoryPath
+            let expandedPath = path.replacingOccurrences(of: "$(SRCROOT)", with: "\(currentPath)")
+            
+            print("Updating \"\(expandedPath)\" for target \"\(target.name)\"")
             
             do {
-                try updateCurrentVersion(infoPlistPath: path, versionUpdater: versionUpdater)
+                try updateCurrentVersion(infoPlistPath: expandedPath, versionUpdater: versionUpdater)
             } catch {
                 throw error
             }
