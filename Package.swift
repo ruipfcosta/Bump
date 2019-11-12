@@ -9,7 +9,7 @@ let package = Package(
         .executable(name: "bump", targets: ["Bump"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/tuist/xcodeproj.git", .branch("master")),
+        .package(url: "https://github.com/tuist/xcodeproj.git", .upToNextMajor(from: "7.4.0")),
     ],
     targets: [
         .target(
